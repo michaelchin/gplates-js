@@ -1,14 +1,20 @@
 # gplates-js
 
-#### compile 
+For now, this package is only used by GPlates App to reconstruct points on the client side.
 
-`npm run compile`
+#### Code Example
 
-#### test the module
+Assume point(lon:0.562344, lat:10.8345) has a plate ID 801,
+reconstruct the point back in time to 50Ma.
 
-- in module root folder, run `npm link`
-- in test folder, run `npm link gplates`
+```typescript
+import { RotationModel } from 'gplates'
 
-test code is in folder `src/test`
+let rotationModel = await RotationModel.loadRotationModelAsync(
+  'https://gws.gplates.org/rotation/get_rotation_map',
+  'MERDITH2021'
+)
+console.log(rotationModel.rotate({ lat: 10.8345, lon: 0.562344 }, 801, 50))
+```
 
-Run .cjs file `node test.cjs`
+This package is a part of AuScope funded project GPlates.

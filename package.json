@@ -1,18 +1,19 @@
 {
   "name": "gplates",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "GPlates NPM package",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.cjs",
     "types": "./dist/index.d.ts"
   },
+  "typings": "./dist/index",
   "type": "module",
   "scripts": {
     "test": "node --no-warnings ./dist/test/main.mjs && node --no-warnings ./src/test/test-use-require.cjs",
-    "compile:mjs": "./node_modules/.bin/babel src --out-dir dist --extensions '.ts' --out-file-extension '.mjs'",
-    "compile:cjs": "./node_modules/.bin/babel src --out-dir dist --extensions '.ts' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
+    "compile:mjs": "babel src --out-dir dist --extensions '.ts' --out-file-extension '.mjs'",
+    "compile:cjs": "babel src --out-dir dist --extensions '.ts' --out-file-extension '.cjs' --config-file ./babel.config.compat.cjs",
     "compile": "npm run compile:mjs && npm run compile:cjs && tsc --emitDeclarationOnly"
   },
   "repository": {
@@ -30,7 +31,6 @@
   },
   "homepage": "https://github.com/michaelchin/gplates-js#readme",
   "dependencies": {
-    "node-fetch": "^3.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
