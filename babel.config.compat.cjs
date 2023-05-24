@@ -1,6 +1,6 @@
 // babel.config.compat.cjs
 module.exports = function configureBabel(api) {
-  api.cache(true);
+  api.cache(true)
   const presets = [
     [
       '@babel/preset-env',
@@ -12,9 +12,9 @@ module.exports = function configureBabel(api) {
       },
     ],
     ['@babel/preset-typescript'],
-  ];
+  ]
   const plugins = [
     ['babel-plugin-add-import-extension', { extension: 'cjs', replace: true }],
-  ];
-  return { presets, plugins };
-};
+  ]
+  return { presets, plugins }
+}

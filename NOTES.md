@@ -11,6 +11,8 @@
 - `cd dist/test`
 - `node main.cjs`
 
+or you can run `npm run test`
+
 #### publish
 
 - `npm login`

@@ -17,7 +17,7 @@ export const normalize = (v: number[], tolerance = 0.00001) => {
     initialValue
   )
   if (Math.abs(mag2 - 1.0) > tolerance && mag2 > 0) {
-    let mag = Math.sqrt(mag2)
+    const mag = Math.sqrt(mag2)
     vv = v.map((x) => x / mag)
   }
   return vv
@@ -45,7 +45,7 @@ export const quatMult = (q1: QuatType, q2: QuatType): QuatType => {
  * @returns
  */
 export const quatConjugate = (q: QuatType): QuatType => {
-  let qq = normalize(q)
+  const qq = normalize(q)
   const [w, x, y, z] = qq
   return [w, -x, -y, -z]
 }
@@ -107,7 +107,7 @@ const quatDot = (q1: QuatType, q2: QuatType) => {
  * quaternion add
  */
 const quatAdd = (q1: QuatType, q2: QuatType) => {
-  let ret: QuatType = [0, 0, 0, 0]
+  const ret: QuatType = [0, 0, 0, 0]
   q1.forEach((val, idx) => {
     ret[idx] = val + q2[idx]
   })
@@ -118,7 +118,7 @@ const quatAdd = (q1: QuatType, q2: QuatType) => {
  * quaternion multiply with a number
  */
 const quatMultNumber = (q: QuatType, t: number) => {
-  let ret: QuatType = [0, 0, 0, 0]
+  const ret: QuatType = [0, 0, 0, 0]
   q.forEach((val, idx) => {
     ret[idx] = t * val
   })
@@ -130,7 +130,7 @@ const quatMultNumber = (q: QuatType, t: number) => {
  * quaternion negate
  */
 const quatNegate = (q: QuatType) => {
-  let ret: QuatType = [-q[0], -q[1], -q[2], -q[3]]
+  const ret: QuatType = [-q[0], -q[1], -q[2], -q[3]]
   return ret
 }
 
@@ -151,13 +151,13 @@ export const quatSlerp = (q1: QuatType, q2: QuatType, t: number) => {
     return q2
   }
 
-  let theta = Math.acos(cos_theta)
+  const theta = Math.acos(cos_theta)
 
   // 1/sin(theta)
-  let factor = 1.0 / Math.sqrt(1.0 - cos_theta * cos_theta)
+  const factor = 1.0 / Math.sqrt(1.0 - cos_theta * cos_theta)
 
-  let c1 = Math.sin((1.0 - t) * theta) * factor // sin((1-t)*theta)/sin(theta)
-  let c2 = Math.sin(t * theta) * factor //sin(t*theta)/sin(theta)
+  const c1 = Math.sin((1.0 - t) * theta) * factor // sin((1-t)*theta)/sin(theta)
+  const c2 = Math.sin(t * theta) * factor //sin(t*theta)/sin(theta)
 
   //sin((1-t)*theta)/sin(theta)*q1 + sin(t*theta)/sin(theta)*q2
   return quatAdd(quatMultNumber(q1, c1), quatMultNumber(q2, c2))

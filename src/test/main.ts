@@ -5,8 +5,17 @@ import {
 } from 'gplates'
 //import { AxisAngle } from './math-utils.js'
 
+/*
+//code example to load rotation model from a .js file
+import data from '../data/SETON2012.js'
+console.log(data)
+const inst = new RotationModel(false)
+RotationModel.loadRotationFromJson(data, inst)
+*/
+
+/*
 const testFun = async () => {
-  let rotationModel = await RotationModel.loadRotationModelAsync(
+  const rotationModel = await RotationModel.loadRotationModelAsync(
     'http://localhost:18000/rotation/get_rotation_map',
     'MERDITH2021'
   )
@@ -16,7 +25,8 @@ const testFun = async () => {
   console.log(rotationModel.getRotation(101, 50))
 }
 
-//testFun();
+testFun()
+*/
 
 RotationModel.loadRotationModel(
   'http://localhost:18000/rotation/get_rotation_map',
@@ -25,9 +35,9 @@ RotationModel.loadRotationModel(
     //console.log(instance.getAllPids())
     console.log(instance.getPidChain(101, 10))
 
-    let ref = instance.getRotation(714, 50)
-    let total = instance.getRotation(101, 50)
-    let relative = instance.getRelativeRotation(101, 50)
+    const ref = instance.getRotation(714, 50)
+    const total = instance.getRotation(101, 50)
+    const relative = instance.getRelativeRotation(101, 50)
     console.log('total')
     console.log(total)
     console.log('ref')

@@ -1,4 +1,5 @@
-const test=require('gplates')
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
+const test = require('gplates')
 
 test.RotationModel.loadRotationModel(
   'http://localhost:18000/rotation/get_rotation_map',
@@ -17,8 +18,8 @@ test.RotationModel.loadRotationModel(
     console.log('relative')
     console.log(relative)
     if (ref && total) console.log(test.calRelativeRotation(total, ref))
-    if (total && relative) console.log(test.calFrameOfRefRotation(total, relative))
+    if (total && relative)
+      console.log(test.calFrameOfRefRotation(total, relative))
     console.log(instance.rotate({ lat: 10.8345, lon: 0.562344 }, 801, 50))
   }
 )
-
